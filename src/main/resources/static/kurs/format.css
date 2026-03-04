@@ -1,10 +1,10 @@
 @CHARSET "UTF-8";
 body {
-	background-color: #CCFFFF;
-	margin-left:100px;
+	background-color: darkblue;
+	margin-left:50px;
 }
 *  {
-	color:magenta;
+	color:lightblue;
 }
 h1 {
 	color:green;
@@ -13,7 +13,7 @@ h1 {
 p  {
 	color:red;
 }
-div#gelb {
+#gelb {
 	color:yellow;
 }
 div#gruen {

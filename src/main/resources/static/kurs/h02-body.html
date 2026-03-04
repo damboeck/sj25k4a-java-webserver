@@ -12,7 +12,22 @@
 		article {
 			background : #AAFFFF;
 		}
+		p {
+			/* Abstand vor/nach dem Absatz (in Zeilenhöhe gedacht) */
+			margin-top: 0.3em;
+			margin-bottom: 0.6em;
+
+			/* Erste Zeile um 1cm einrücken */
+			text-indent: 1cm;
+		}
+		header {
+			background: yellow;
+		}
+		.redhead {
+			background: red;
+		}
 	</style>
+	<!-- Das ist ein Kommentar -->
 </head>
 <body>
 	<header>
@@ -21,13 +36,16 @@
 	</header>
 	
 	Header und footer sollten nur einmal in einem html-Dokument vorkommen, der
-	nav- und aside Bereich kann mehrmals vorkommen. <br>
-	articel und section können ebenfalls mehrmals und verschachtelt vorkommen<br> 
-	
+	nav- und aside Bereich kann mehrmals vorkommen. <p>
+	article und section können ebenfalls mehrmals und verschachtelt vorkommen
+	</p>
+	<p>
+	Die neuen semantischen Bereiche sind:
+	</p>
 	<nav>
 	<ul>
 		<li>header : Kopfbereich der Seite</li>
-		<li>footer : Fußbereich der Seite</li>
+		<li style="background:gray;">footer : Fußbereich der Seite</li>
 		<li>nav    : Navigationsbereich der Seite </li>
 		<li>aside  : Seitenbereich der Seite </li>
 		<li>article: Artikelbereich</li>
@@ -40,7 +58,7 @@
 	
 	<article>
 		<section>
-			<header>
+			<header class="redhead">
 				<h3>Kapitel 1</h3>
 			</header>
 			Dies ist das erste Kapitel eines Artikels.
