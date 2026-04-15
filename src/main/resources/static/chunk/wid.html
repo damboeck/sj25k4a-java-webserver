@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+      function calc() {
+        let inp_R1 = document.getElementById("R1");
+        let inp_R2 = document.getElementById("R2");
+        let output = document.getElementById("result");
+        let R1 = inp_R1.value;
+        let R2 = inp_R2.value;
+        R1 *= 1.0;
+        R2 *= 1.0;
+        let Rs = R1+R2;
+        let Rp = R1*R2/(R1+R2)
+        output.innerHTML  = 'Serienersatzwiderstand = '+Rs+' &Omega;<br>';
+        output.innerHTML += 'Parallelersatzwiderstand = ';
+        if (Rp<10) output.innerHTML += '<span style="color:red;">'+Rp+' &Omega;'+'</span>';
+        else       output.innerHTML += Rp+' &Omega;';
+        output.innerHTML += '<br>';
+      }
+    </script>
+
+</head>
+<body>
+  <form method="dialog">
+    <h1>Widerstandsberechnung</h1>
+    <label for="R1">R1:</label>
+    <input type="text" id="R1" name="R1" value="" onkeyup="calc()">
+    <br>
+    <label for="R2">R2:</label>
+    <input type="text" id="R2" name="R2" value="" onkeyup="calc()">
+    <button onclick="calc()">Berechne</button>
+    <hr>
+    <div id="result"></div>
+  </form>
+</body>
+</html>

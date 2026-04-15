@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function calc() {
+            let r1 = document.getElementById("r1").value*1;
+            let r2 = document.getElementById("r2").value*1;
+            let rserResult = document.getElementById("rser");
+            let rparResult = document.getElementById("rpar");
+            /*console.log("R1 = "+r1);
+            console.log("R2 = "+r2);*/
+            let rser=r1+r2;
+            let rpar=(r1*r2)/(r1+r2);
+            console.log("R-Serie = "+rser);
+            console.log("R-Parallel = "+rpar);
+            // Ergebnisse ausgeben
+            rserResult.innerHTML = rser;
+            rparResult.innerHTML = rpar;
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Widerstandsberechnung</h1>
+    <form method="dialog">
+        <label for="r1">R1:</label>
+        <input type="number" id="r1" name="r1" onkeyup="calc()"><br>
+        <label for="r2">R2:</label>
+        <input type="number" id="r2" name="r2" onkeyup="calc()"><br>
+        <input type="submit" value="Berechnen" onclick="calc()">
+    </form>
+    <hr>
+    <div>Serienersatzwiderstand: <span id="rser"></span> &Omega; </div>
+    <div>Parallelersatzwiderstand: <span id="rpar"></span> &Omega; </div>
+
+</body>
+</html>
