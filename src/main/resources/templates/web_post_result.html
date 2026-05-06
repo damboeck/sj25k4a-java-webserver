@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .table-wrapper {
+      border: 2px solid #d1d5db;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      background: white;
+      width: 50%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+
+    th {
+      background: #2563eb;
+      color: white;
+      text-align: left;
+      padding: 14px 16px;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    tr:nth-child(even) {
+      background: #f9fafb;
+    }
+
+    tr:hover {
+      background: #eef4ff;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ergebnis</h1>
+  <div class="table-wrapper">
+  <table>
+    <tr><td>R1</td><td th:text="${r1}"></td></tr>
+    <tr><td>R2</td><td th:text="${r2}"></td></tr>
+    <tr><td>R-Serie</td><td th:text="${rser}"></td></tr>
+    <tr><td>R-Parallel</td><td th:text="${rpar}"></td></tr>
+  </table>
+  </div>
+  <br><a href="/web/posttest">back</a>
+</body>
+</html>

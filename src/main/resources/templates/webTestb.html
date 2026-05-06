@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Meine erste Thymleaf-Seite</h1>
+    <span th:text="${msg}" style="color:red;"></span>
+    <hr>
+    <form th:action="@{/web/testb}" method="get">
+        <label for="r1">R1:</label>
+        <input type="text" name="r1" id="r1" th:value="${r1}"><br>
+        <label for="r2">R2:</label>
+        <input type="text" name="r2" id="r2" th:value="${r2}"><br>
+        <button type="submit">OK</button>
+    </form>
+    <span th:if="${hasresult}">
+        <hr>
+        <div>Serienersatzwiderstand = <span th:text="${rser}"></span>&Omega;</div>
+        <div>Parallelersatzwiderstand = <span th:text="${rpar}"></span>&Omega;</div>
+    </span>
+</body>
+</html>
