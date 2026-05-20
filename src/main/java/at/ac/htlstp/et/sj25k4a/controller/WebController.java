@@ -57,6 +57,19 @@ public class WebController {
     @RequestMapping("/web/pt")
     public String webPostTest2(Model model, String r1, String r2) {
         model.addAttribute("msg","Hallo Welt!");
+        model.addAttribute("r1",r1);
+        model.addAttribute("r2",r2);
+        model.addAttribute("result",false);
+        try {
+            double dR1 = Double.parseDouble(r1.replaceAll(",", "."));
+            double dR2 = Double.parseDouble(r2.replaceAll(",", "."));
+            double serie = dR1 + dR2;
+            double par = dR1 * dR2 / (dR1 + dR2);
+            model.addAttribute("serie", serie);
+            model.addAttribute("par", par);
+            if (serie>0)
+                model.addAttribute("result",true);
+        } catch (Exception e) {}
         return "web_post_test2";
     }
 

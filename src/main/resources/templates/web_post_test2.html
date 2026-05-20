@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" title="Tabelle" href="/css/tablewrapper.css">
+</head>
+<body>
+    <h1>Meine erste Thymeleaf-Seite</h1>
+    <p th:text="${msg}"></p>
+    <hr>
+    <form th:action="@{/web/pt}"  method="post">
+        <label for="r1">R1:</label>
+        <input type="text" th:value="${r1}" th:name="r1" id="r1"><br>
+        <label for="r2">R2:</label>
+        <input type="text" th:value="${r2}" th:name="r2" id="r2"><br>
+        <input type="submit" value="Berechnen">
+    </form>
+    <span th:if="${result}">
+        <hr>
+        <div>Serienersatzwiderstand = <span th:text="${serie}"></span>&Omega;</div>
+        <div>Parallelersatzwiderstand = <span th:text="${par}"></span>&Omega;</div>
+    </span><br>
+    <hr>
+    <div th:if="${result}" class="table-wrapper">
+        <table>
+            <tr><td>R1</td><td th:text="${r1}"></td></tr>
+            <tr><td>R2</td><td th:text="${r2}"></td></tr>
+            <tr><td>R-Serie</td><td th:text="${serie}"></td></tr>
+            <tr><td>R-Parallel</td><td th:text="${par}"></td></tr>
+        </table>
+    </div>
+</body>
+</html>

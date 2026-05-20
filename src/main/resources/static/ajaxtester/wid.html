@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX-Tester</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+    <label for="r1">R1:</label>
+    <input type="text" th:name="r1" id="r1"><br>
+    <label for="r2">R2:</label>
+    <input type="text" th:name="r2" id="r2"><br>
+    <hr>
+    <div id="res1">  </div>
+    <div id="res2">  </div>
+
+    <script>
+        $(function () {
+            const $r1 = $("#r1");
+            const $r2 = $("#r2");
+            const $res1 = $("#res1");
+            const $res2 = $("#res2");
+
+            function sendRequest() {
+                const r1Val = $r1.val();
+                const r2Val = $r2.val();
+
+                // Optional: leere Eingabe nicht senden
+                if (r1Val.trim() === "") {
+                    $res1.text("—");
+                    $res2.text("—");
+                    return;
+                }
+                // Optional: leere Eingabe nicht senden
+                if (r2Val.trim() === "") {
+                    $res1.text("—");
+                    $res2.text("—");
+                    return;
+                }
+
+                $res1.text("…"); // Ladeanzeige
+
+                $.ajax({
+                    url: "/api/calcwid",
+                    method: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify({ r1: r1Val, r2: r2Val }),
+                    success: function (data) {
+                        // Erwartet z.B. { "result": 123 }
+                        if (data && typeof data.rSerie !== "undefined") {
+                            $res1.text(data.rSerie);
+                            $res2.text(data.rParallel);
+                        }
+                    },
+                    error: function (xhr) {
+                        const msg = xhr.responseText ? xhr.responseText : ("HTTP " + xhr.status);
+                        $res1.text("Fehler: " + msg);
+                    }
+                });
+            }
+
+            // "change" feuert beim Verlassen des Felds oder Enter (wenn Wert geändert wurde)
+            $r1.on("change", sendRequest);
+            $r2.on("change", sendRequest);
+
+            // Wenn du es "live" bei jedem Tippen willst, zusätzlich:
+            // $x.on("input", sendRequest);
+        });
+    </script>
+</body>
+</html>
